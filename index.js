@@ -1,7 +1,7 @@
 const express = require("express");
+const { config } = require("./config/config.default");
 
-const PORT = 3000;
-const HOST = "0.0.0.0";
+const { port, host } = config;
 
 const app = express();
 
@@ -9,4 +9,4 @@ app.get("/", (req, res) => {
   res.send("Setup");
 });
 
-app.listen(PORT, HOST);
+app.listen(port, host);
