@@ -6,7 +6,7 @@ services:
     container_name: api
     restart: always
     ports:
-      - "3000:3000"
+      - ${PORT}:${PORT}
     volumes:
       - .:/usr/app
     working_dir: /usr/app
