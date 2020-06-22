@@ -1,0 +1,64 @@
+{
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "airbnb-base"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "no-underscore-dangle": 1,
+    "class-methods-use-this": 1,
+    "arrow-parens": [
+      2,
+      "as-needed",
+      {
+        "requireForBlockBody": true
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "error"
+        ]
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": {
+          "multiline": true,
+          "minProperties": 5
+        },
+        "ObjectPattern": {
+          "multiline": true,
+          "minProperties": 5
+        },
+        "ImportDeclaration": {
+          "multiline": true,
+          "minProperties": 5
+        },
+        "ExportDeclaration": {
+          "multiline": true,
+          "minProperties": 5
+        }
+      }
+    ]
+  }
+}
