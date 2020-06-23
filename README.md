@@ -1,5 +1,5 @@
-<p align="center" style="background-color: #E83837;">
-   <img src="https://deliverymuch.com.br/assets/imgs/logo-deliverymuch.svg" width="200" 
+<p align="center">
+   <img src="./readme/dm-challenge.png" width="500" 
     />
 </p>
 
