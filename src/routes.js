@@ -1,7 +1,7 @@
 const express = require("express");
 const routes = express.Router();
 
-const RecipesController = require("./controller/RecipesController");
+const RecipesController = require("./controllers/RecipesController");
 
 routes
   .get("/", async (req, res) => {
