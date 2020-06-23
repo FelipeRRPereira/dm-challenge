@@ -49,4 +49,13 @@ describe("Testes", () => {
     );
     done();
   });
+
+  test("Deve retornar um array de ingredientes ordenado", async (done) => {
+    const ingredients = "sugar,onion,tomato";
+    const res = await request.get(`/recipes?i=${ingredients}`);
+    expect(res.status).toBe(200);
+    const ingredientsArray = ["sugar", "tomato", "cinnamon"].sort();
+    expect(res.body.recipes[0].ingredients).toEqual(ingredientsArray);
+    done();
+  });
 });
