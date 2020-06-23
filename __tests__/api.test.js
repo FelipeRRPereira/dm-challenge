@@ -3,6 +3,7 @@ const supertest = require("supertest");
 const request = supertest(app);
 
 describe("Testes", () => {
+  jest.setTimeout(60000);
   test("Testando endpoint /", async (done) => {
     const response = await request.get("/");
 
