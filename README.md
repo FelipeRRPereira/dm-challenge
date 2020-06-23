@@ -1,11 +1,11 @@
-<p align="center">
+<p align="center" style="background-color: #E83837;">
    <img src="https://deliverymuch.com.br/assets/imgs/logo-deliverymuch.svg" width="200" 
-   style="background-color: #E83837;" />
+    />
 </p>
 
-<h2 align="center">
-  Delivery Much Tech Challenge 
-</h2>
+<h1 align="center">
+  Delivery Much - Tech Challenge 
+</h1>
 
 [![Autor](https://img.shields.io/badge/Autor-FelipeRRPereira-E83837?style=flat-square)](https://github.com/FelipeRRPereira)
 [![Languages](https://img.shields.io/github/languages/count/FelipeRRPereira/dm-challenge?color=E83837&label=Langueges&style=flat-square)](#)
