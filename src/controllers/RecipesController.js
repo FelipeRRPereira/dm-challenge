@@ -1,4 +1,6 @@
 const RecipePuppyService = require("../services/RecipePuppyService");
+const GiphyService = require("../services/GiphyService");
+
 const { forEachAsync } = require("../../libs/util");
 
 exports.index = async (req, res) => {
@@ -20,11 +22,18 @@ exports.index = async (req, res) => {
     const ingredients = recipe.ingredients
       .match(/(?=\S)[^,]+?(?=\s*(,|$))/g)
       .sort();
+
+    const gif = await GiphyService.index(recipe.title);
+    if (gif.message)
+      return res.status(gif.status).json({
+        message: gif.message,
+      });
+
     recipes.push({
       title: recipe.title,
       ingredients,
-      link: "",
-      gif: "",
+      link: recipe.href,
+      gif,
     });
   });
 
