@@ -2,7 +2,7 @@ const app = require("../src/app"); // Link to your server file
 const supertest = require("supertest");
 const request = supertest(app);
 
-describe("Testes", async () => {
+describe("Testes", () => {
   test("Testando endpoint /", async (done) => {
     const response = await request.get("/");
 
@@ -18,10 +18,25 @@ describe("Testes", async () => {
     done();
   });
 
-  test("Deve retornar um erro", async (done) => {
+  test("Deve retornar erro de no mínimo um ingrediente", async (done) => {
     const res = await request.get("/recipes?i=");
     expect(res.status).toBe(404);
-    expect(res.body.erro).toBe("Deve retornar pelo menos um ingrediente!");
+    expect(res.body.message).toBe(
+      "Deve ser informado pelo menos um ingrediente!"
+    );
+    done();
+  });
+
+  test("Deve retornar um array de receitas", async (done) => {
+    const res = await request.get("/recipes?i=onion,tomato,cress");
+    expect(res.status).toBe(200);
+    expect(res.body).toMatchObject({ recipes: expect.anything() });
+    expect(res.body.recipes).toMatchObject({
+      title: expect.anything(),
+      ingredients: expect.anything(),
+      link: expect.anything(),
+      gif: expect.anything(),
+    });
     done();
   });
 });
