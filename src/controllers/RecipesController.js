@@ -1,4 +1,5 @@
 const RecipePuppyService = require("../services/RecipePuppyService");
+const { forEachAsync } = require("../../libs/util");
 
 exports.index = async (req, res) => {
   const { i } = req.query;
@@ -14,13 +15,21 @@ exports.index = async (req, res) => {
       message: recipesPuppy.message,
     });
 
-  res.json({
-    keywords: ingredients,
-    recipes: {
-      title: "",
-      ingredients: "",
+  const recipes = [];
+  await forEachAsync(recipesPuppy, async (recipe) => {
+    const ingredients = recipe.ingredients
+      .match(/(?=\S)[^,]+?(?=\s*(,|$))/g)
+      .sort();
+    recipes.push({
+      title: recipe.title,
+      ingredients,
       link: "",
       gif: "",
-    },
+    });
+  });
+
+  res.json({
+    keywords: ingredients,
+    recipes,
   });
 };
