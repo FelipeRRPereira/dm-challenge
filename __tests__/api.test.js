@@ -31,12 +31,22 @@ describe("Testes", () => {
     const res = await request.get("/recipes?i=onion,tomato,cress");
     expect(res.status).toBe(200);
     expect(res.body).toMatchObject({ recipes: expect.anything() });
-    expect(res.body.recipes).toMatchObject({
+    expect(res.body.recipes[0]).toMatchObject({
       title: expect.anything(),
       ingredients: expect.anything(),
       link: expect.anything(),
       gif: expect.anything(),
     });
+    done();
+  });
+
+  test("Deve retornar mensagem quando nenhuma receita for encontrada", async (done) => {
+    const ingredients = "iii, iii";
+    const res = await request.get(`/recipes?i=${ingredients}`);
+    expect(res.status).toBe(200);
+    expect(res.body.message).toBe(
+      `Nenhuma receita encontrada para os ingredientes ${ingredients}.`
+    );
     done();
   });
 });
